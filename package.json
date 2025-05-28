@@ -1,0 +1,54 @@
+{
+  "name": "tastytable-sithi",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^5.31.3",
+    "@clerk/themes": "^2.2.44",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@imagekit/react": "^5.0.1",
+    "@mui/material": "^7.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tanstack/react-query": "^5.76.1",
+    "axios": "^1.9.0",
+    "framer-motion": "^12.12.1",
+    "lucide-react": "^0.510.0",
+    "motion": "^12.12.1",
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-quill": "^2.0.0",
+    "react-router": "^7.6.0",
+    "react-router-dom": "^7.6.1",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@tanstack/eslint-plugin-query": "^5.74.7",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+  }
+}
