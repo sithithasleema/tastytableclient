@@ -27,7 +27,12 @@ export default function LandingPage() {
         </Link>
       </div>
       <div className="w-1/2">
-        <Imagekit src="/welcome.png" w={800} h={800} alt="Welcome image" />
+        <Imagekit
+          src="https://ik.imagekit.io/sthasleema/newburger.png?updatedAt=1748524910752"
+          w={800}
+          h={800}
+          alt="Welcome image"
+        />
       </div>
     </div>
   );
