@@ -3,10 +3,10 @@ import SearchComp from "./SearchComp";
 
 export default function MainCategories() {
   return (
-    <div className="hidden md:flex bg-primary text-white items-center justify-between text-xl  h-16 w-full font-serif  ">
+    <div className="flex overflow-x-auto md:overflow-x-visible whitespace-nowrap bg-primary text-white text-base h-16 w-full items-center font-serif scrollbar-hide ">
       {/* Links */}
 
-      <div className="hidden md:flex overflow-x-auto whitespace-nowrap scroll-smooth bg-primary ">
+      <div className="hidden md:flex overflow-x-auto whitespace-nowrap  bg-primary ">
         <Link
           to="/recipes"
           className="hover:bg-secondary text-white h-full flex items-center justify-center  border-r-2 px-6"
