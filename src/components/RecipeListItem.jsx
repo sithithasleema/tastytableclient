@@ -19,7 +19,7 @@ export default function RecipeListItem({ post }) {
             </span>
           </Link>
           <Link to={`/recipes/${post?.slug}`}>
-            <h3 className="text-2xl font-bold text-gray-800 my-2 cursor-pointer hover:text-gray-600">
+            <h3 className="text-2xl font-bold text-gray-800 my-2 cursor-pointer hover:text-gray-600 line-clamp-1">
               {post?.title}
             </h3>
           </Link>
@@ -33,14 +33,14 @@ export default function RecipeListItem({ post }) {
             - {format(post?.createdAt)}
           </p>
           <div className="flex flex-col justify-between flex-grow mt-4">
-            <p className="text-sm lg:text-lg text-gray-700 mt-4 line-clamp-3">
+            <p className="text-sm lg:text-lg text-gray-700 mt-4 line-clamp-2">
               {post?.description}
-              <Link to={`/recipes/${post?.slug}`}>
-                <span className="text-left text-primary text-sm font-semibold px-2 underline">
-                  Read More
-                </span>
-              </Link>
             </p>
+            <Link to={`/recipes/${post?.slug}`}>
+              <p className="text-right text-primary text-sm font-semibold px-2 underline hover:text-gray-800">
+                Read More
+              </p>
+            </Link>
           </div>
         </div>
       </article>
