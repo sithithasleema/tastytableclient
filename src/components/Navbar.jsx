@@ -37,7 +37,12 @@ export const Navbar = () => {
       <div className="flex w-full h-16 md:20 items-center justify-between mt-8 bg-white  px-6 md:px-12 lg:px-28 xl:px-48 sticky top-0 z-20">
         {/* Logo */}
         <Link to="/">
-          <Imagekit src="/logo.png" alt="Tasty table logo" w={92} h={92} />
+          <Imagekit
+            src="https://ik.imagekit.io/sthasleema/Orange%20Yellow%20Simple%20Kitchen%20Food%20Logo-Photoroom.png?updatedAt=1748522888928"
+            alt="Tasty table logo"
+            w={92}
+            h={92}
+          />
         </Link>
 
         {/* Mobile Menu */}

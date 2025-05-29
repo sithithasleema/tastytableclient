@@ -31,7 +31,7 @@ export default function PostAuthor({ user }) {
       <div className="flex gap-4 my-6">
         <Link>
           <Imagekit
-            src="https://ik.imagekit.io/sthasleema/facebook?updatedAt=1747375291849"
+            src="https://ik.imagekit.io/sthasleema/_Pngtree_facebook%20social%20media%20icon_8704814.png?updatedAt=1748522446689"
             w="24px"
             h="24px"
           />
@@ -39,7 +39,7 @@ export default function PostAuthor({ user }) {
 
         <Link>
           <Imagekit
-            src="https://ik.imagekit.io/sthasleema/instagram?updatedAt=1747375307970"
+            src="https://ik.imagekit.io/sthasleema/_Pngtree_instagram_icon_8704817_OKvhud7hQ.png?updatedAt=1748404686155"
             w="24px"
             h="24px"
           />
