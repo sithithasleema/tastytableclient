@@ -28,7 +28,7 @@ export default function PostAuthor({ user }) {
       </p> */}
 
       {/* Social Media Icons */}
-      <div className="flex gap-4 my-6">
+      <div className="flex gap-4 mb-6 ">
         <Link>
           <Imagekit
             src="https://ik.imagekit.io/sthasleema/_Pngtree_facebook%20social%20media%20icon_8704814.png?updatedAt=1748522446689"

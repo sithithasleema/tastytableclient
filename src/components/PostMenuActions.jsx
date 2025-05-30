@@ -130,21 +130,15 @@ export default function PostMenuActions({ post }) {
   };
 
   return (
-    <div className="space-y-4">
-      {isPending ? (
-        "Loading"
-      ) : error ? (
-        "Error Saving"
-      ) : (
-        <div className="flex gap-2 cursor-pointer" onClick={handleSave}>
-          <Bookmark
-            fill={isSaved ? "black" : "none"}
-            stroke="black"
-            strokeWidth={post.isSaved ? 0 : 1.5}
-          />
-          Save this post
-        </div>
-      )}
+    <div className="">
+      <div className="flex gap-2 cursor-pointer" onClick={handleSave}>
+        <Bookmark
+          fill={isSaved ? "black" : "none"}
+          stroke="black"
+          strokeWidth={post.isSaved ? 0 : 1.5}
+        />
+        Save this post
+      </div>
 
       {/* Conditionally rendering feature button only for admin */}
       {isAdmin && (

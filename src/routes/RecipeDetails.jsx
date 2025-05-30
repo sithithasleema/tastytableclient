@@ -78,7 +78,7 @@ export default function RecipeDetails() {
           <SearchComp className="w-full" />
         </aside>
         {/* Author */}
-        <aside className="py-6 px-8 h-auto flex flex-col gap-4 items-start mb-8 border shadow-lg rounded-lg">
+        <aside className="py-6 px-8 h-auto flex flex-col  items-start mb-8 border shadow-lg rounded-lg">
           <PostAuthor user={data.user} />
           <PostMenuActions post={data} />
         </aside>
