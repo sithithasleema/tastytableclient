@@ -1,16 +1,22 @@
 import { useAuth, useUser } from "@clerk/clerk-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { Bookmark, BookMarked, FeatherIcon, Star } from "lucide-react";
+import { Bookmark, Star } from "lucide-react";
 import { Trash2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router";
+import Modal from "./Modal";
 
 export default function PostMenuActions({ post }) {
   const { user } = useUser();
   const { getToken } = useAuth();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [modalConfig, setModalConfig] = useState(null);
+  const { isSignedIn } = useAuth();
+
+  const closeModal = () => setModalConfig(null);
 
   // Fetching Saved Posts
   const {
@@ -96,8 +102,22 @@ export default function PostMenuActions({ post }) {
   });
 
   const handleSave = () => {
-    if (!user) navigate("/login");
-    saveMutation.mutate();
+    if (!isSignedIn) {
+      setModalConfig({
+        title: "Login Required",
+        message: "You need to be logged in to bookmark a recipe.",
+        buttons: [
+          { label: "Cancel" },
+          {
+            label: "Login",
+            onClick: () => navigate("/login"),
+            style: "px-4 py-2 bg-primary text-white rounded hover:bg-secondary",
+          },
+        ],
+      });
+    } else {
+      saveMutation.mutate();
+    }
   };
 
   // Featuring Post
@@ -130,36 +150,46 @@ export default function PostMenuActions({ post }) {
   };
 
   return (
-    <div className="">
-      <div className="flex gap-2 cursor-pointer" onClick={handleSave}>
-        <Bookmark
-          fill={isSaved ? "black" : "none"}
-          stroke="black"
-          strokeWidth={post.isSaved ? 0 : 1.5}
-        />
-        Save this post
-      </div>
-
-      {/* Conditionally rendering feature button only for admin */}
-      {isAdmin && (
-        <div className="flex gap-2 cursor-pointer" onClick={handleFeature}>
-          <Star
-            fill={post.isFeatured ? "black" : "none"}
+    <>
+      <div className="">
+        <div className="flex gap-2 cursor-pointer" onClick={handleSave}>
+          <Bookmark
+            fill={isSaved ? "black" : "none"}
             stroke="black"
-            strokeWidth={post.isFeatured ? 0 : 1.5}
+            strokeWidth={post.isSaved ? 0 : 1.5}
           />
-          Feature
-          {featureMutation.isPending && <p>Loading...</p>}
+          Save this post
         </div>
-      )}
 
-      {/* Conditionally rendering delete button only for owner of post */}
-      {user && (post.user.username === user.username || isAdmin) && (
-        <div className="flex gap-2 cursor-pointer" onClick={handleDelete}>
-          <Trash2 />
-          Delete this post
-        </div>
+        {/* Conditionally rendering feature button only for admin */}
+        {isAdmin && (
+          <div className="flex gap-2 cursor-pointer" onClick={handleFeature}>
+            <Star
+              fill={post.isFeatured ? "black" : "none"}
+              stroke="black"
+              strokeWidth={post.isFeatured ? 0 : 1.5}
+            />
+            Feature
+            {featureMutation.isPending && <p>Loading...</p>}
+          </div>
+        )}
+
+        {/* Conditionally rendering delete button only for owner of post */}
+        {user && (post.user.username === user.username || isAdmin) && (
+          <div className="flex gap-2 cursor-pointer" onClick={handleDelete}>
+            <Trash2 />
+            Delete this post
+          </div>
+        )}
+      </div>
+      {modalConfig && (
+        <Modal
+          title={modalConfig.title}
+          message={modalConfig.message}
+          buttons={modalConfig.buttons}
+          onClose={closeModal}
+        />
       )}
-    </div>
+    </>
   );
 }

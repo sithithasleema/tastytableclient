@@ -4,10 +4,11 @@ import { Imagekit } from "./Image";
 import { Link, useNavigate } from "react-router";
 import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/clerk-react";
 import { useEffect } from "react";
+import Modal from "./Modal";
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalConfig, setModalConfig] = useState(null);
   const { isSignedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -19,18 +20,24 @@ export const Navbar = () => {
 
   const handleAddRecipe = () => {
     if (!isSignedIn) {
-      setModalOpen(true);
+      setModalConfig({
+        title: "Login Required",
+        message: "You need to be logged in to add a new recipe.",
+        buttons: [
+          { label: "Cancel" },
+          {
+            label: "Login",
+            onClick: () => navigate("/login"),
+            style: "px-4 py-2 bg-primary text-white rounded hover:bg-secondary",
+          },
+        ],
+      });
     } else {
       navigate("/new");
     }
   };
 
-  const closeModal = () => setModalOpen(false);
-
-  const goToLogin = () => {
-    setModalOpen(false);
-    navigate("/login");
-  };
+  const closeModal = () => setModalConfig(null);
 
   return (
     <>
@@ -102,43 +109,13 @@ export const Navbar = () => {
           </SignedIn>
         </div>
       </div>
-
-      {/* Simple Modal */}
-      {modalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          onClick={closeModal}
-        >
-          <div
-            className="bg-white p-6 rounded-lg max-w-lg w-full relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={closeModal}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              <X size={24} />
-            </button>
-            <h2 className="text-xl font-semibold mb-4">Login Required</h2>
-            <p className="mb-6">
-              You need to be logged in to add a new recipe.
-            </p>
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={closeModal}
-                className="px-4 py-2 border rounded hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={goToLogin}
-                className="px-4 py-2 bg-primary text-white rounded hover:bg-secondary"
-              >
-                Login
-              </button>
-            </div>
-          </div>
-        </div>
+      {modalConfig && (
+        <Modal
+          title={modalConfig.title}
+          message={modalConfig.message}
+          buttons={modalConfig.buttons}
+          onClose={closeModal}
+        />
       )}
     </>
   );
