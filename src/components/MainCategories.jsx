@@ -3,7 +3,7 @@ import SearchComp from "./SearchComp";
 
 export default function MainCategories() {
   return (
-    <div className="flex overflow-x-auto md:overflow-x-visible whitespace-nowrap bg-primary text-white text-base h-16 w-full items-center font-serif scrollbar-hide ">
+    <div className="hidden md:flex whitespace-nowrap bg-primary text-white text-base h-16 w-full items-center font-serif scrollbar-hide ">
       {/* Links */}
 
       <div className="hidden md:flex overflow-x-auto whitespace-nowrap  bg-primary ">

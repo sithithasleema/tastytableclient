@@ -27,13 +27,17 @@ export const Navbar = () => {
           { label: "Cancel" },
           {
             label: "Login",
-            onClick: () => navigate("/login"),
+            onClick: () => {
+              navigate("/login");
+              setOpen(false);
+            },
             style: "px-4 py-2 bg-primary text-white rounded hover:bg-secondary",
           },
         ],
       });
     } else {
       navigate("/new");
+      setOpen(false);
     }
   };
 
@@ -67,10 +71,20 @@ export const Navbar = () => {
               open ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <Link to="/home" className=" hover:text-gray-500">
+            <Link
+              to="/home"
+              className=" hover:text-gray-500"
+              onClick={() => setOpen(false)}
+            >
               Home
             </Link>
-            <Link to="/recipes" className=" hover:text-gray-500" href="/">
+
+            <Link
+              to="/recipes"
+              className=" hover:text-gray-500"
+              href="/"
+              onClick={() => setOpen(false)}
+            >
               Recipes
             </Link>
             <button onClick={handleAddRecipe} className="hover:text-gray-500">
@@ -78,7 +92,10 @@ export const Navbar = () => {
             </button>
 
             <Link to="/login" className=" hover:text-gray-500">
-              <button className="py-2 px-8  bg-primary text-white hover:bg-secondary">
+              <button
+                className="py-2 px-8  bg-primary text-white hover:bg-secondary"
+                onClick={() => setOpen(false)}
+              >
                 Login
               </button>
             </Link>
